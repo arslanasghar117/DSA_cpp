@@ -137,6 +137,24 @@ class doubly_linkedlist
             cout<<ptr->data;
         }
     }
+
+    void insert_loc(int a, int loc){
+        node *ptr=first;
+        int i=1;
+        while(i<loc){
+            ptr=ptr->next;
+            i++;
+        }
+
+        node *temp=new node;
+        temp->prev=ptr;
+        temp->next=ptr->next;
+        ptr->next->prev=temp;
+        ptr->next=temp;
+        temp->data=a;
+
+
+    }
 };
 
 int main()
@@ -145,10 +163,15 @@ int main()
     d.insert_first(9);
     d.insert_first(8);
     d.insert_first(7);
+    d.insert_first(6);
+    d.insert_first(5);
+    d.insert_first(4);
     d.show_forward();
     d.show_backward();
     d.remove_first();
     d.show_forward();
     d.remove_last();
+    d.show_forward();
+    d.insert_loc(2,3);
     d.show_forward();
 }
